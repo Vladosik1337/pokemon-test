@@ -2,20 +2,12 @@
 
 import { Pokemon } from "@/api";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useCallback } from "react";
 
 interface ProductCardProps {
   product: Pokemon;
 }
 
 export const PokemonCard = ({ product }: ProductCardProps) => {
-  const router = useRouter();
-
-  const handleNavigate = useCallback(() => {
-    router.push(`/products/${product.name}`);
-  }, [router, product]);
-
   return (
     <Link
       href={`/pokemon/${product.name}`}

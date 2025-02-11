@@ -1,16 +1,15 @@
 "use client";
 
-import { usetGetPokemonById } from "@/api/queries";
+import { useGetPokemonById } from "@/api/queries";
 import { Loader, PokemonImage } from "@/components";
 import { PokemonCharacteristic } from "@/components/PokemonCharacteristic";
 import { useParams } from "next/navigation";
 
 const ProductPage = () => {
+  //@typescript-eslint/no-explicit-any
   const { pokemonName } = useParams();
 
-  const { data: pokemon, isLoading } = usetGetPokemonById(
-    pokemonName as string
-  );
+  const { data: pokemon, isLoading } = useGetPokemonById(pokemonName as string);
 
   if (isLoading) {
     return (
@@ -41,12 +40,17 @@ const ProductPage = () => {
       </div>
       <h3>Weight: {pokemon?.weight}</h3>
       <div className="flex-col">
-        {pokemon?.stats?.map((statObject: any) => {
+        {/* eslint-disable  @typescript-eslint/no-explicit-any */}
+        {pokemon?.stats?.map((statObject: any, id: number) => {
           const statName = statObject.stat.name;
           const statValue = statObject.base_stat;
 
           return (
-            <PokemonCharacteristic statName={statName} statValue={statValue} />
+            <PokemonCharacteristic
+              statName={statName}
+              statValue={statValue}
+              key={id}
+            />
           );
         })}
       </div>

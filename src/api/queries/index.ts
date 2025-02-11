@@ -1,2 +1,2 @@
 export * from "./useGetAllPokemons";
-export * from "./usetGetPokemonById";
+export * from "./useGetPokemonById";

@@ -8,6 +8,7 @@ import { useDebouncedQuery } from "@/hooks";
 import { useMemo } from "react";
 
 export default function Home() {
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   const { query, setQuery, debouncedQuery } = useDebouncedQuery();
 
   const { data: pokemons, isLoading } = useGetAllPokemons(POKEMONS_LIMIT);

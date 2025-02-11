@@ -15,6 +15,7 @@ export const apiHandlers = {
         }
       );
     },
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     getPokemonById(pokemonName: string): AxiosResponseSuccess<any> {
       return getData<any>(apiPaths.pokemons.getPokemonById(pokemonName));
     },
